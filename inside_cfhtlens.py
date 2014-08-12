@@ -4,7 +4,7 @@
 
 import numpy as np;
 
-racen,deccen=np.loadtxt("/scratch/dac29/data/CFHTLS-T0007/fldid_f.txt",usecols=(4,5),unpack=1);
+racen,deccen=np.loadtxt("./fldid_f.txt",usecols=(4,5),unpack=1);
 
 def within_tile(qra,qdec,center_ra,center_dec):
     from math import sin, cos, pi 
