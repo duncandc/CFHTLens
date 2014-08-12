@@ -3,7 +3,7 @@
 #Author: Duncan Campbell
 #Written: August 14, 2013
 #Yale University
-#Description: Read in hdf5 CFHTLS photo-z catalogues and print out column names
+#Description: Read in hdf5 CFHTLS photo-z catalogues and process the pdz column into something more useable.
 
 ###packages###
 import numpy as np
