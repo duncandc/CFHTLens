@@ -3,7 +3,8 @@
 #Author: Duncan Campbell
 #Written: August 14, 2013
 #Yale University
-#Description: Read in hdf5 CFHTLS photo-z catalogues and print out names
+#Description: Read in hdf5 CFHTLS photo-z catalogues and write a version with fewer columns.
+#    id,ra,dec, and xyz vectors
 
 ###packages###
 import numpy as np
