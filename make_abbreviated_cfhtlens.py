@@ -29,7 +29,7 @@ def main():
                ('x','<f8'),('y','<f8'),('z','<f8'), \
                ('Flag', '<i8'),('MASK', '<i8'), \
                ('MAG_u', '<f8'),('MAG_g', '<f8'),('MAG_r', '<f8'),('MAG_i', '<f8'),('MAG_y', '<f8'),('MAG_z', '<f8'), \
-               ('PZ_full', np.float64, (70,))]
+               ('PDZ', np.float64, (70,))]
         dtype = np.dtype(dtype)
         data = np.recarray((len(dset),), dtype=dtype)
 
