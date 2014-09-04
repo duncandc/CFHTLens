@@ -25,13 +25,32 @@ def main():
         f =  h5py.File(filepath+filename+'.hdf5', 'r')
         dset = f.get(field)
   
-        dtype=[('id','S13'),('ra','<f8'),('dec','<f8'),('x','<f8'),('y','<f8'),('z','<f8')]
+        dtype=[('id','S13'),('ALPHA_J2000','<f8'),('DELTA_J2000','<f8'), \
+               ('x','<f8'),('y','<f8'),('z','<f8'), \
+               ('Flag', '<i8'),('MASK', '<i8'), \
+               ('MAG_u', '<f8'),('MAG_g', '<f8'),('MAG_r', '<f8'),('MAG_i', '<f8'),('MAG_y', '<f8'),('MAG_z', '<f8'), \
+               ('PZ_full', np.float64, (70,))]
         dtype = np.dtype(dtype)
         data = np.recarray((len(dset),), dtype=dtype)
 
         data['id']  = dset['id']
-        data['ra']  = dset['ALPHA_J2000']
-        data['dec'] = dset['DELTA_J2000']
+        data['ALPHA_J2000'] = dset['ALPHA_J2000']
+        data['DELTA_J2000'] = dset['DELTA_J2000']
+        
+        data['Flag']  = dset['Flag']
+        data['MASK']  = dset['MASK']
+        data['MAG_u']  = dset['MAG_u']
+        data['MAG_g']  = dset['MAG_g']
+        data['MAG_r']  = dset['MAG_r']
+        data['MAG_i']  = dset['MAG_i']
+        data['MAG_y']  = dset['MAG_y']
+        data['MAG_z']  = dset['MAG_z']
+        
+        #process pdz column
+        string = np.array(dset['PZ_full'])
+        for i in range(0,len(W)):
+            print i
+            data['PDZ'][i] = np.array([float(x) for x in string[i].split(',')])
 
         print 'converting ra,dec coordinates into vectors...'
         x, y, z = spherical_to_cartesian(dset['ALPHA_J2000'],dset['DELTA_J2000'], threads=4)
