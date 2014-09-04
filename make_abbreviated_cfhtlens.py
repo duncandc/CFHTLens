@@ -48,7 +48,7 @@ def main():
         
         #process pdz column
         string = np.array(dset['PZ_full'])
-        for i in range(0,len(W)):
+        for i in range(0,len(dset)):
             print i
             data['PDZ'][i] = np.array([float(x) for x in string[i].split(',')])
 
