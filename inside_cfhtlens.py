@@ -2,6 +2,8 @@
 # Function to calculate if a point is within the CFHTLS Wide field and within
 # which field id.
 
+__all__=['within_tile','num_tile','inside_survey']
+
 import numpy as np;
 
 racen,deccen=np.loadtxt("./fldid_f.txt",usecols=(4,5),unpack=1);
