@@ -5,8 +5,10 @@
 __all__=['within_tile','num_tile','inside_survey']
 
 import numpy as np;
+import os
 
-racen,deccen=np.loadtxt("./fldid_f.txt",usecols=(4,5),unpack=1);
+filepath = os.path.dirname(__file__)
+racen,deccen=np.loadtxt(filepath+"/fldid_f.txt",usecols=(4,5),unpack=1);
 
 def within_tile(qra,qdec,center_ra,center_dec):
     from math import sin, cos, pi 
