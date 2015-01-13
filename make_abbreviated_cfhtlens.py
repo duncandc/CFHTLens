@@ -10,11 +10,12 @@
 import numpy as np
 import h5py
 import sys
+import custom_utilities as cu
 
 def main():
     ###make sure to change these when running in a new enviorment!###
     #location of data directory
-    filepath = '/scratch/dac29/output/processed_data/CFHTLens/catalogues/'
+    filepath = cu.get_output_path()+'processed_data/CFHTLens/catalogues/'
     #################################################################
   
     fields=['W1','W2','W3','W4']
@@ -29,7 +30,7 @@ def main():
                ('x','<f8'),('y','<f8'),('z','<f8'), \
                ('Flag', '<i8'),('MASK', '<i8'), \
                ('MAG_u', '<f8'),('MAG_g', '<f8'),('MAG_r', '<f8'),('MAG_i', '<f8'),('MAG_y', '<f8'),('MAG_z', '<f8'), \
-               ('PDZ', np.float64, (70,))]
+               ('PDZ', np.float64, (70,)),('Z_B', '<f8')]
         dtype = np.dtype(dtype)
         data = np.recarray((len(dset),), dtype=dtype)
 
@@ -45,6 +46,7 @@ def main():
         data['MAG_i']  = dset['MAG_i']
         data['MAG_y']  = dset['MAG_y']
         data['MAG_z']  = dset['MAG_z']
+        data['Z_B']  = dset['Z_B']
         
         #process pdz column
         string = np.array(dset['PZ_full'])
